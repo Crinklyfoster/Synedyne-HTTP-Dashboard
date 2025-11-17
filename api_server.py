@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import datetime
 
@@ -14,6 +14,13 @@ app.add_middleware(
 )
 
 latest_data = {}
+
+@app.get("/")
+def root():
+    # Read the HTML file and return it
+    with open("dashboard.html", "r") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content, status_code=200)
 
 @app.post("/data")
 async def receive_data(request: Request):
