@@ -1,0 +1,35 @@
+✅ 1. Create the Project Folder
+mkdir gateway-demo
+cd gateway-demo
+
+✅ 2. Install FastAPI + Uvicorn
+
+(Required for building the API server)
+
+pip install fastapi uvicorn
+
+✅ 3. (Optional) Install Requests Library
+
+(Used by the gateway simulator to send HTTP POST)
+
+pip install requests
+
+✅ 4. Run the FastAPI Server
+
+Inside the project folder:
+
+uvicorn api_server:app --reload
+
+
+This starts your local API at:
+
+http://127.0.0.1:8000
+
+✅ 5. Run the Gateway Simulator
+
+Open a second terminal:
+
+python gateway_simulator.py
+
+
+This sends JSON every 5 seconds to your server.
