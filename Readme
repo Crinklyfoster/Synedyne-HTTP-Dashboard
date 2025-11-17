@@ -1,0 +1,154 @@
+✅ 1. HTTP Methods
+
+You used:
+
+POST
+
+Gateway → sends data to your API using
+POST http://127.0.0.1:8000/data
+
+Used whenever a device or client wants to send new data.
+
+GET
+
+Dashboard → reads data from
+GET http://127.0.0.1:8000/dashboard
+
+Used for retrieving information.
+
+These are the 2 most important HTTP methods, and you already used both correctly.
+
+✅ 2. HTTP Endpoints (Routes / URLs)
+
+You created two endpoints:
+
+/data → For receiving JSON
+
+/dashboard → For showing latest readings
+
+This means you understood:
+
+✔ How APIs expose URLs
+✔ How clients call them
+✔ How data flows over HTTP routes
+
+✅ 3. HTTP Request Body
+
+You sent JSON in the request body:
+
+{
+  "gateway_id": "GW-001",
+  "meters": [...],
+  "timestamp": "..."
+}
+
+
+This is the most common format for IoT and web APIs.
+
+You saw how Python receives it:
+
+data = await request.json()
+
+
+This is core to every API ever built.
+
+✅ 4. HTTP Status Codes
+
+You saw:
+
+200 OK
+
+
+Which means:
+
+Request was successful
+
+The API accepted the data
+
+You also saw that errors appear as other codes (400, 500, etc.)
+
+This is important for debugging IoT systems.
+
+✅ 5. CORS (Cross-Origin Resource Sharing)
+
+You learned that:
+
+Browsers block HTTP requests from local HTML pages unless allowed
+
+You enabled CORS with:
+
+allow_origins=["*"]
+
+
+This is a critical real-world concept in:
+
+✔ Web development
+✔ Dashboards
+✔ IoT portals
+
+And you fixed a real problem using CORS.
+
+✅ 6. HTTP Client vs Server
+
+You now understand:
+
+✔ Gateway = HTTP client
+
+Sends POST requests
+
+Has a URL to submit data to
+
+Does not store anything locally
+
+✔ API = HTTP server
+
+Listens for requests
+
+Processes them
+
+Sends responses
+
+This is the essence of all web systems.
+
+✅ 7. JSON Serialization
+
+You converted Python objects → JSON:
+
+requests.post(..., json=payload)
+
+
+This is called serialization, essential for data exchange over HTTP.
+
+✅ 8. Response Objects
+
+Your server responded with:
+
+return {"status": "ok"}
+
+
+Which the gateway received as JSON automatically.
+
+You now understand:
+
+✔ request → process → response
+✔ server returns structured data
+✔ client reads it
+
+
+
+
+
+
+
+| Concept          | Meaning                | You Used It           |
+| ---------------- | ---------------------- | --------------------- |
+| HTTP client      | device sending request | gateway_simulator.py  |
+| HTTP server      | API receiving requests | api_server.py         |
+| POST             | send data              | /data                 |
+| GET              | fetch data             | /dashboard            |
+| Request body     | JSON payload           | meters, gateway_id    |
+| Response         | server reply           | {"status":"ok"}       |
+| Status codes     | 200 OK                 | success prints        |
+| CORS             | browser security       | fixed dashboard issue |
+| Routes/Endpoints | API paths              | /data, /dashboard     |
+| Serialization    | Python → JSON → Python | gateway + API         |
